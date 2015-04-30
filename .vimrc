@@ -123,7 +123,7 @@ function! BrowseDoc()
 endfunction
 map <F4> :call BrowseDoc()<cr><cr>
 
-" syntastic
+" Syntastic, requires phpcs and phpmd in your path
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
