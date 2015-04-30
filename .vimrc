@@ -2,7 +2,7 @@
 "
 " F1  - Help
 " F2  - Open/Focus NERDTree
-" F3  - Open NERDTree at current file
+" F3  - Open/Focus NERDTree at current file
 " F4  - Search on php.net for under cursor
 " F5  - Starts VDebug (default key)
 " F6  - Opens vimwiki
