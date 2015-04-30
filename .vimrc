@@ -48,7 +48,7 @@ set nobackup
 set nowritebackup
 set noswapfile
 
-" Exuberant tags
+" Exuberant tags, requires ctags
 set tags=tags
 
 " Tag list
