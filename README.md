@@ -42,7 +42,7 @@ Screenshot
 * php
 * Xdebug
 * phpmd
-* phpcd
+* phpcs
 * php-cs-fixer
 * git
 * xdg-open
