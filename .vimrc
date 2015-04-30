@@ -139,6 +139,9 @@ nmap <S-C-F9> :lclose<cr>
 " Silver Searcher
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
+" use :W to sudo when you need to 
+cmap W %!sudo tee > /dev/null % 
+
 " Convenience
 " Comment out to break bad habits, remove mouse support
 set mouse=a
