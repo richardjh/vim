@@ -116,6 +116,9 @@ autocmd FileType nerdtree noremap <buffer> <F8> <nop>
 " Associate .md files with markdown and not modula files
 filetype plugin on
 au BufRead,BufNewFile *.md set filetype=markdown
+" Treat blade/twig templates as html
+au BufRead,BufNewFile *.blade.php set filetype=html
+au BufRead,BufNewFile *.twig set filetype=html
 
 " PHP Manual lookup
 function! BrowseDoc()
