@@ -39,8 +39,13 @@ endif
 
 " Colour
 colorscheme xoria256
+" highlight column 80
 highlight ColorColumn ctermbg=0 guibg=DarkGrey
 set colorcolumn=80
+" set red background over 120 chars
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+match OverLength /\%121v.\+/
+" mute fold colour to grey
 highlight Folded ctermbg=8 guibg=DarkGrey
 
 " Temp files
