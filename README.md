@@ -47,3 +47,4 @@ Screenshot
 * git
 * xdg-open
 * ag
+* Xmodmap
