@@ -39,14 +39,11 @@ endif
 
 " Colour
 colorscheme xoria256
-" highlight column 80
 highlight ColorColumn ctermbg=0 guibg=DarkGrey
 set colorcolumn=80
-" set red background over 120 chars
+
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 match OverLength /\%121v.\+/
-" mute fold colour to grey
-highlight Folded ctermbg=8 guibg=DarkGrey
 
 " Temp files
 set nobackup
@@ -70,8 +67,8 @@ set tabstop=4
 set softtabstop=4
 set smarttab
 set expandtab
-set autoindent
-set copyindent
+"set autoindent
+"set copyindent
 set nowrap
 set nojoinspaces
 
@@ -166,8 +163,9 @@ set mousehide
 "noremap <Del> <NOP>
 " Map CapsLock to Esc, this is global and requires Xmodmap
 au VimEnter * silent! !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+
 " Easy split switching
-nmap <C-h> <C-w>h
-nmap <C-j> <C-w>j
-nmap <C-k> <C-w>k
-nmap <C-l> <C-w>l
+"nmap <C-h> <C-w>h
+"nmap <C-j> <C-w>j
+"nmap <C-k> <C-w>k
+"nmap <C-l> <C-w>l
