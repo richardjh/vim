@@ -1,12 +1,9 @@
 # My vim config
 
-Now managed with vundle. Install vundle
+Now managed with Vundle. The following two commands will install all the plugins
 
-    git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim 
-
-Then you can install all other plugins from within vim using
-
-    :PluginInstall
+    $ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim 
+    $ vim +PluginInstall +qall
 
 ## Screenshot
 
