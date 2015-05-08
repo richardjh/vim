@@ -17,6 +17,27 @@
 set nocompatible
 set t_Co=256
 
+" Vundle
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'gmarik/Vundle.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
+Plugin 'kien/ctrlp.vim'
+Plugin 'joonty/vdebug.git'
+Plugin 'bling/vim-airline'
+Plugin 'vimwiki/vimwiki'
+Plugin 'mikewest/vimroom'
+Plugin 'vim-scripts/taglist.vim'
+Plugin 'shawncplus/phpcomplete.vim'
+Plugin 'rking/ag.vim'
+Plugin 'msanders/snipmate.vim'
+Plugin 'vim-scripts/xoria256.vim'
+call vundle#end()
+filetype plugin indent on
+
 " Appearance
 set showmode
 set number
@@ -24,11 +45,11 @@ set showmatch
 set spell spelllang=en_gb
 set cursorline
 set scrolloff=3
-syntax on
 set foldmethod=indent
 set foldlevel=99
 set fillchars="fold: " 
 set hlsearch
+syntax on
 
 " GUI Appearance
 set guioptions-=r  "remove right-hand scroll bar
@@ -41,7 +62,6 @@ endif
 colorscheme xoria256
 highlight ColorColumn ctermbg=0 guibg=DarkGrey
 set colorcolumn=80
-
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 match OverLength /\%121v.\+/
 
@@ -50,7 +70,7 @@ set nobackup
 set nowritebackup
 set noswapfile
 
-" Exuberant tags, requires ctags
+" Exuberant tags
 set tags=tags
 
 " Tag list
@@ -67,8 +87,8 @@ set tabstop=4
 set softtabstop=4
 set smarttab
 set expandtab
-"set autoindent
-"set copyindent
+set autoindent
+set copyindent
 set nowrap
 set nojoinspaces
 
@@ -115,16 +135,14 @@ nmap <F8> :bn<cr>
 autocmd FileType nerdtree noremap <buffer> <F7> <nop>
 autocmd FileType nerdtree noremap <buffer> <F8> <nop>
 
-" Associate .md files with markdown and not modula files
-filetype plugin on
+" Change filetype associations
 au BufRead,BufNewFile *.md set filetype=markdown
-" Treat blade/twig templates as html
 au BufRead,BufNewFile *.blade.php set filetype=html
 au BufRead,BufNewFile *.twig set filetype=html
 
 " PHP Manual lookup
 function! BrowseDoc()
-    ! xdg-open "http://php.net/manual-lookup.php?pattern=<cword>" 1>/dev/null 2>/dev/null &
+  ! xdg-open "http://php.net/manual-lookup.php?pattern=<cword>" 1>/dev/null 2>/dev/null &
 endfunction
 map <F4> :call BrowseDoc()<cr><cr>
 
@@ -144,14 +162,10 @@ nmap <S-C-F9> :lclose<cr>
 " Silver Searcher
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
-" use :W! to sudo when you need to 
-cmap W! %!sudo tee > /dev/null % 
-
-" Convenience
-" Comment out to break bad habits, remove mouse support
+" Comment out to break bad habits
 set mouse=a
 set mousehide
-" Uncomment to break bad habits, unmap convenience keys
+" Uncomment to break bad habits
 "noremap <Up> <NOP>
 "noremap <Down> <NOP>
 "noremap <Left> <NOP>
@@ -161,5 +175,6 @@ set mousehide
 "noremap <BS> <NOP>
 "noremap <Insert> <NOP>
 "noremap <Del> <NOP>
-" Map CapsLock to Esc, this is global and requires Xmodmap
+
+" Map CapsLock to Esc
 au VimEnter * silent! !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'

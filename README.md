@@ -1,24 +1,32 @@
 # My vim config
 
-Screenshot
+Now managed with vundle. Install vundle
+
+    git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim 
+
+Then you can install all other plugins from within vim using
+
+    :PluginInstall
+
+## Screenshot
 
 ![screenshot](/vim.png)
 
 ## Features
 
-* Search PHP Manual
+* Search the PHP Manual
 * Spell checking
 * Code formatting
 * Code completion and snippets
+* PHP aware code completions
 * Jump to declaration
 * Easy navigation
 * Intelligent search
-* Save with sudo
 * Session management
 * Keep cursor position
 * Code folding
 * Line numbers
-* Easy to toggle convenience features, such as mouse support
+* Enable convenience features, such as mouse support
 
 ## Plugins
 
@@ -30,12 +38,10 @@ Screenshot
 * Vimwiki
 * Vimroom
 * Taglist
-* Omnifunc
 * phpcomplete
 * Silver Searcher
 * Syntastic
 * Snipmate
-* Matrix
 
 ## Dependencies
 
