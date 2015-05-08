@@ -23,6 +23,7 @@ Now managed with Vundle. The following two commands will install all the plugins
 * Keep cursor position
 * Code folding
 * Line numbers
+* Indentation guides
 * Enable convenience features, such as mouse support
 
 ## Plugins
