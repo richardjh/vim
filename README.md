@@ -31,6 +31,7 @@ Screenshot
 * Vimroom
 * Taglist
 * Omnifunc
+* phpcomplete
 * Silver Searcher
 * Syntastic
 * Snipmate

@@ -163,9 +163,3 @@ set mousehide
 "noremap <Del> <NOP>
 " Map CapsLock to Esc, this is global and requires Xmodmap
 au VimEnter * silent! !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
-
-" Easy split switching
-"nmap <C-h> <C-w>h
-"nmap <C-j> <C-w>j
-"nmap <C-k> <C-w>k
-"nmap <C-l> <C-w>l
