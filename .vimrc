@@ -35,6 +35,7 @@ Plugin 'shawncplus/phpcomplete.vim'
 Plugin 'rking/ag.vim'
 Plugin 'msanders/snipmate.vim'
 Plugin 'vim-scripts/xoria256.vim'
+Plugin 'nathanaelkane/vim-indent-guides'
 call vundle#end()
 filetype plugin indent on
 
@@ -60,10 +61,19 @@ endif
 
 " Colour
 colorscheme xoria256
+
+" Long lines
 highlight ColorColumn ctermbg=0 guibg=DarkGrey
 set colorcolumn=80
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 match OverLength /\%121v.\+/
+
+" Indentation guides
+let g:indent_guides_auto_colors = 0
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=black    ctermbg=black
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=darkgrey ctermbg=darkgrey
 
 " Temp files
 set nobackup
@@ -125,7 +135,7 @@ augroup END
 set laststatus=2
 let g:airline#extensions#tabline#enabled=1
 let g:airline_detect_paste=0
-let g:airline_theme='dark'
+let g:airline_theme='jellybeans'
 
 " buffers
 set hidden
