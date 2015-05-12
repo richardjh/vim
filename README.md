@@ -16,6 +16,7 @@ Now managed with Vundle. The following two commands will install all the plugins
 * Code formatting
 * Code completion and snippets
 * PHP aware code completions
+* PHP refactorings
 * Jump to declaration
 * Easy navigation
 * Intelligent search
@@ -37,6 +38,7 @@ Now managed with Vundle. The following two commands will install all the plugins
 * Vimroom
 * Taglist
 * phpcomplete
+* vim-php-refactor
 * Silver Searcher
 * Syntastic
 * Snipmate

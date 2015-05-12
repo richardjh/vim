@@ -36,6 +36,8 @@ Plugin 'rking/ag.vim'
 Plugin 'msanders/snipmate.vim'
 Plugin 'vim-scripts/xoria256.vim'
 Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'austintaylor/vim-commaobject'
+Plugin 'beberlei/vim-php-refactor'
 call vundle#end()
 filetype plugin indent on
 
