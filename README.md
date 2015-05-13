@@ -45,7 +45,7 @@ Now managed with Vundle. The following two commands will install all the plugins
 
 ## Dependencies
 
-* exuberant-tags
+* exuberant-tags (use patched ctags, see https://github.com/shawncplus/phpcomplete.vim/wiki/Patched-ctags)
 * php
 * Xdebug
 * phpmd
