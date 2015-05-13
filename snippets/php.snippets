@@ -1,0 +1,105 @@
+snippet .php
+	<?php
+snippet .ns
+	namespace ${1:<namespace>}
+snippet .class
+	/**
+	 * $2
+	 */
+	${1:}class ${2:<name>} ${3:}
+	{
+	    ${4://...}
+	}
+snippet .interface
+	/**
+	 * $1Interface
+	 */
+	interface ${1:<name>}Interface
+	{
+	    ${2://...}
+	}
+snippet .trait
+	/**
+	 * $1Trait
+	 */
+	trait ${1:<name>}Trait
+	{
+	    ${2://...}
+	}
+snippet .function
+	/**
+	 * $2
+	 *
+	 * @return ${4:<type>}
+	 */
+	${1:public} function ${2:<name>}(${3:})
+	{
+	    ${5://...}
+
+		return ${6:<value>}
+	}
+snippet .r
+	return ${1:<value>}
+snippet .t
+	$this->${1:<value>}
+snippet .me
+	Richard Holloway <richard@richardjh.org>
+# Working with ZF2
+snippet .zend.service.factory
+	use Zend\ServiceManager\FactoryInterface;
+	use Zend\ServiceManager\ServiceLocatorInterface;
+	
+	class ${1:<service>}Factory implements FactoryInterface
+	{
+	    /**
+	     * Create $1
+	     *
+	     * @param ServiceLocatorInterface $serviceLocator
+	     *
+	     * @return $1
+	     */
+	    public function createService(ServiceLocatorInterface $serviceLocator)
+	    {
+	        $${2:<value>} = $serviceLocator->get('${3:<identifier>}');
+	        $service = new $1($$2);
+
+	        ${3:}
+	 
+	        return $service;
+	    }
+	}	
+snippet .zend.mvc.controller
+	use Zend\Mvc\Controller\AbstractActionController;
+	use Zend\View\View\ViewModel;
+
+	/**
+	 * $1Controller
+	 */
+	class ${1:<class>}Controller extends AbstractActionController
+	{
+		/**
+		 * $3Action
+		 *
+		 * @return ViewModel
+		 */
+	    ${2:public} function ${3:<name>}Action()
+	    {
+			${4:}
+			return new ViewModel();
+	    }
+	}
+snippet .zend.service
+	/**
+	 * $2Service
+	 */
+	${1:}class ${2:<name>}Service${3:}
+	{
+		/**
+		 * $5
+		 */
+	    ${4:public} function ${5:<name>}(${6:})
+	    {
+			${7:}
+	    }
+	}
+
