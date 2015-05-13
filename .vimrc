@@ -40,6 +40,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'vim-scripts/taglist.vim'
 Plugin 'vim-scripts/xoria256.vim'
 Plugin 'vimwiki/vimwiki'
+Plugin 'Shougo/neocomplete.vim'
 call vundle#end()
 filetype plugin indent on
 
@@ -86,6 +87,7 @@ set noswapfile
 
 " Exuberant tags
 set tags=tags
+nmap :t :!ctags -R --fields=+aimS --languages=php
 
 " Tag list
 let Tlist_Use_Right_Window   = 1
@@ -93,7 +95,11 @@ nmap <F12> :TlistToggle<cr>
 
 " Code completion
 autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 set completeopt=longest,menuone
+let g:neocomplete#enable_at_startup = 1
 
 " Indenting
 set shiftwidth=4
