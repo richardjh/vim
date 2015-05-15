@@ -5,9 +5,10 @@ Now managed with Vundle. The following two commands will install all the plugins
     $ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim 
     $ vim +PluginInstall +qall
 
-## Screenshot
+## Screenshots
 
 ![screenshot](/vim.png)
+![screenshot](/vim2.png)
 
 ## Features
 
