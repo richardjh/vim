@@ -4,11 +4,11 @@ snippet .ns
 	namespace ${1:<namespace>}
 snippet .class
 	/**
-	 * $2
+	 * $1
 	 */
-	${1:}class ${2:<name>} ${3:}
+	class ${1:<name>} ${2:}
 	{
-	    ${4://...}
+	    ${3://...}
 	}
 snippet .interface
 	/**
