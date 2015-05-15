@@ -43,6 +43,7 @@ Now managed with Vundle. The following two commands will install all the plugins
 * Silver Searcher
 * Syntastic
 * Snipmate
+* Tortoise Typing
 
 ## Dependencies
 
