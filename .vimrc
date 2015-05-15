@@ -41,6 +41,7 @@ Plugin 'vim-scripts/taglist.vim'
 Plugin 'vim-scripts/xoria256.vim'
 Plugin 'vimwiki/vimwiki'
 Plugin 'Shougo/neocomplete.vim'
+Plugin 'morhetz/gruvbox'
 call vundle#end()
 filetype plugin indent on
 
@@ -65,7 +66,9 @@ if has("gui_running")
 endif
 
 " Colour
-colorscheme xoria256
+"colorscheme xoria256
+colorscheme gruvbox
+set background=dark
 
 " Long lines
 highlight ColorColumn ctermbg=0 guibg=DarkGrey
