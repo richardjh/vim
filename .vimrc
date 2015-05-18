@@ -5,7 +5,7 @@
 " F3  - Open/Focus NERDTree at current file
 " F4  - Search on php.net for under cursor
 " F5  - Starts VDebug (default key)
-" F6  - Opens vimwiki
+" F6  - Refresh tags list
 " F7  - Previous buffer
 " F8  - Next buffer
 " F9  - Syntastic check, Shift+F9 - reset, Ctrl+F9 - list, Ctrl+Shift+F9 - close errors
@@ -91,7 +91,7 @@ set noswapfile
 
 " Exuberant tags
 set tags=tags
-nmap :t :!ctags -R --fields=+aimS --languages=php
+nmap <F6> :!ctags -R --fields=+aimS --languages=php <CR>
 
 " Tag list
 let Tlist_Use_Right_Window   = 1
@@ -129,7 +129,6 @@ nmap <F3> :NERDTreeFind<cr>
 let g:ctrlp_working_path_mode = 'rw'
 
 " VimWiki
-nmap <F6> <Leader>ww
 let g:vimwiki_list = [ {'path':'~/.vimwiki', 'path_html':'~/.vimwiki/html'} ]
 
 " Restore cursor position
