@@ -36,7 +36,6 @@ Now managed with Vundle. The following two commands will install all the plugins
 * Fugitive
 * Airline
 * Vimwiki
-* Vimroom
 * Taglist
 * phpcomplete
 * vim-php-refactor
