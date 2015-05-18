@@ -62,14 +62,16 @@ syntax on
 " GUI Appearance
 set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=L  "remove left-hand scroll bar
+set guioptions-=m  "remove menu
+set guioptions-=T  "remove toolbar
 if has("gui_running")
   set lines=40 columns=160 " make the window a little bigger
 endif
 
 " Colour
-"colorscheme xoria256
-colorscheme gruvbox
-set background=dark
+colorscheme xoria256
+"colorscheme gruvbox
+"set background=dark
 
 " Long lines
 highlight ColorColumn ctermbg=0 guibg=DarkGrey
