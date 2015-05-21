@@ -206,3 +206,6 @@ au VimEnter * silent! !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 set printoptions=number:y,syntax:n
 "set printheader=%<%f\ [%{strftime('%d/%m/%y')}]%=\ %N/%{line('$')/73+1}
 set printheader=%<%f%=\ %N/%{line('$')/73+1}
+
+" Clipboard
+set clipboard=unnamedplus
