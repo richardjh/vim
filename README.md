@@ -22,11 +22,10 @@ Now managed with Vundle. The following two commands will install all the plugins
 * Easy navigation
 * Intelligent search
 * Session management
-* Keep cursor position
 * Code folding
 * Line numbers
 * Indentation guides
-* Enable convenience features, such as mouse support
+* Enable convenience features, such as mouse support, cursor position
 
 ## Plugins
 
@@ -42,16 +41,16 @@ Now managed with Vundle. The following two commands will install all the plugins
 * Silver Searcher
 * Syntastic
 * Snipmate
-* Tortoise Typing
 
 ## Dependencies
 
-* exuberant-tags (use patched ctags, see https://github.com/shawncplus/phpcomplete.vim/wiki/Patched-ctags)
+* vim-gui -provides lua support for plugins
+* [patched exuberant-tags](https://github.com/shawncplus/phpcomplete.vim/wiki/Patched-ctags)
 * php
-* Xdebug
 * phpmd
 * phpcs
 * php-cs-fixer
+* Xdebug
 * git
 * xdg-open
 * ag

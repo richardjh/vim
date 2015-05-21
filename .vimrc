@@ -41,7 +41,6 @@ Plugin 'vim-scripts/xoria256.vim'
 Plugin 'vimwiki/vimwiki'
 Plugin 'Shougo/neocomplete.vim'
 Plugin 'morhetz/gruvbox'
-Plugin 'thanthese/Tortoise-Typing'
 call vundle#end()
 filetype plugin indent on
 
