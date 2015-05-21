@@ -55,3 +55,10 @@ Now managed with Vundle. The following two commands will install all the plugins
 * xdg-open
 * ag
 * Xmodmap
+
+## Useful resources
+
+* [vim online](http://www.vim.org)
+* [Vim Tips Wiki](http://vim.wikia.com/wiki/Vim_Tips_Wiki)
+* [Vi and Vim Stack Exchange](http://vi.stackexchange.com)
+* [Vimcasts](http://vimcasts.org)
