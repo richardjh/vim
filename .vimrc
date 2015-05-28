@@ -53,7 +53,7 @@ set cursorline
 set scrolloff=3
 set foldmethod=indent
 set foldlevel=99
-set fillchars="fold: " 
+set fillchars="fold: "
 set hlsearch
 syntax on
 
@@ -76,6 +76,9 @@ highlight ColorColumn ctermbg=0 guibg=DarkGrey
 set colorcolumn=80
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 match OverLength /\%121v.\+/
+
+" Strip trailing white space on save
+autocmd BufWritePre * :%s/\s\+$//e
 
 " Indentation guides
 let g:indent_guides_auto_colors = 0
