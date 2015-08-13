@@ -56,6 +56,10 @@ set foldlevel=99
 set fillchars="fold: "
 set hlsearch
 syntax on
+highlight NonText guifg:#4a4a59
+highlight SpecialKey guifg:#4a4a59
+set listchars=tab:▸\ ,eol:¬,trail:.,nbsp:.¬
+set list
 
 " GUI Appearance
 set guioptions-=r  "remove right-hand scroll bar
