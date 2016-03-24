@@ -4,7 +4,7 @@
 " F2  - Open/Focus NERDTree
 " F3  - Open/Focus NERDTree at current file
 " F4  - Search on php.net for under cursor
-" F5  - Starts VDebug (default key)
+" F5  -
 " F6  - Refresh tags list
 " F7  - Previous buffer
 " F8  - Next buffer
@@ -21,24 +21,17 @@ set t_Co=256
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-Plugin 'austintaylor/vim-commaobject'
-Plugin 'beberlei/vim-php-refactor'
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'gmarik/Vundle.vim'
-Plugin 'joonty/vdebug.git'
 Plugin 'kien/ctrlp.vim'
-Plugin 'msanders/snipmate.vim'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'rking/ag.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'shawncplus/phpcomplete.vim'
 Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-surround'
 Plugin 'vim-scripts/taglist.vim'
-Plugin 'vim-scripts/xoria256.vim'
-Plugin 'vimwiki/vimwiki'
 Plugin 'Shougo/neocomplete.vim'
 Plugin 'morhetz/gruvbox'
 call vundle#end()
@@ -58,7 +51,7 @@ set hlsearch
 syntax on
 highlight NonText guifg=#4a4a59
 highlight SpecialKey guifg=#4a4a59
-set listchars=tab:▸\ ,eol:¬,trail:·,nbsp:·
+set listchars=tab:▸\ ,trail:·,nbsp:·
 set list
 
 " GUI Appearance
@@ -71,15 +64,12 @@ if has("gui_running")
 endif
 
 " Colour
-colorscheme xoria256
-"colorscheme gruvbox
-"set background=dark
+colorscheme gruvbox
+set background=dark
 
 " Long lines
 highlight ColorColumn ctermbg=0 guibg=DarkGrey
 set colorcolumn=80
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%121v.\+/
 
 " Strip trailing white space on save
 autocmd BufWritePre * :%s/\s\+$//e
@@ -123,9 +113,6 @@ set copyindent
 set nowrap
 set nojoinspaces
 
-" Snip mate
-set nopaste
-
 " NERDTree
 nmap <C-v> :vertical resize +5<cr>
 nmap <C-b> :NERDTreeToggle<cr>
@@ -134,9 +121,6 @@ nmap <F3> :NERDTreeFind<cr>
 
 " CtrlP
 let g:ctrlp_working_path_mode = 'rw'
-
-" VimWiki
-let g:vimwiki_list = [ {'path':'~/.vimwiki', 'path_html':'~/.vimwiki/html'} ]
 
 " Restore cursor position
 function! ResCur()
