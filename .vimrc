@@ -9,7 +9,7 @@
 " F7  - Previous buffer
 " F8  - Next buffer
 " F9  - Syntastic check, Shift+F9 - reset, Ctrl+F9 - list, Ctrl+Shift+F9 - close errors
-" F10 - Set breakpoint
+" F10 -
 " F11 - Desktop fullscreen window
 " F12 - Toggle Tag list
 
@@ -66,10 +66,6 @@ endif
 " Colour
 colorscheme gruvbox
 set background=dark
-
-" Long lines
-highlight ColorColumn ctermbg=0 guibg=DarkGrey
-set colorcolumn=80
 
 " Strip trailing white space on save
 autocmd BufWritePre * :%s/\s\+$//e
@@ -176,26 +172,15 @@ nmap <S-C-F9> :lclose<cr>
 " Silver Searcher
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
-" Comment out to break bad habits
+" Mouse
 set mouse=a
 set mousehide
-" Uncomment to break bad habits
-"noremap <Up> <NOP>
-"noremap <Down> <NOP>
-"noremap <Left> <NOP>
-"noremap <Right> <NOP>
-"noremap <Home> <NOP>
-"noremap <End> <NOP>
-"noremap <BS> <NOP>
-"noremap <Insert> <NOP>
-"noremap <Del> <NOP>
 
 " Map CapsLock to Esc
 au VimEnter * silent! !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 
 " Printing
 set printoptions=number:y,syntax:n
-"set printheader=%<%f\ [%{strftime('%d/%m/%y')}]%=\ %N/%{line('$')/73+1}
 set printheader=%<%f%=\ %N/%{line('$')/73+1}
 
 " Clipboard

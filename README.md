@@ -2,7 +2,7 @@
 
 Now managed with Vundle. The following two commands will install all the plugins
 
-    $ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim 
+    $ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
     $ vim +PluginInstall +qall
 
 ## Screenshots
@@ -15,13 +15,11 @@ Now managed with Vundle. The following two commands will install all the plugins
 * Search the PHP Manual
 * Spell checking
 * Code formatting
-* Code completion and snippets
+* Code completion
 * PHP aware code completions
-* PHP refactorings
 * Jump to declaration
 * Easy navigation
 * Intelligent search
-* Session management
 * Code folding
 * Line numbers
 * Indentation guides
@@ -31,26 +29,21 @@ Now managed with Vundle. The following two commands will install all the plugins
 
 * NERDTree
 * CtrlP
-* VDebug
 * Fugitive
 * Airline
-* Vimwiki
 * Taglist
 * phpcomplete
-* vim-php-refactor
 * Silver Searcher
 * Syntastic
-* Snipmate
 
 ## Dependencies
 
-* vim-gui -provides lua support for plugins
+* vim with lua support
 * [patched exuberant-tags](https://github.com/shawncplus/phpcomplete.vim/wiki/Patched-ctags)
 * php
 * phpmd
 * phpcs
 * php-cs-fixer
-* Xdebug
 * git
 * xdg-open
 * ag
