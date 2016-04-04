@@ -28,6 +28,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'rking/ag.vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'aufgang001/vim-nerdtree_plugin_open'
 Plugin 'scrooloose/syntastic'
 Plugin 'shawncplus/phpcomplete.vim'
 Plugin 'tpope/vim-fugitive'
@@ -115,6 +116,9 @@ nmap <C-v> :vertical resize +5<cr>
 nmap <C-b> :NERDTreeToggle<cr>
 nmap <F2> :NERDTree<cr>
 nmap <F3> :NERDTreeFind<cr>
+
+" NERDTree open
+let g:nerdtree_plugin_open_cmd = 'open'
 
 " CtrlP
 let g:ctrlp_working_path_mode = 'rw'
