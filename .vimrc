@@ -34,6 +34,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'vim-scripts/taglist.vim'
 Plugin 'Shougo/neocomplete.vim'
 Plugin 'morhetz/gruvbox'
+Plugin 'dietsche/vim-lastplace'
 call vundle#end()
 filetype plugin indent on
 
@@ -118,19 +119,6 @@ nmap <F3> :NERDTreeFind<cr>
 " CtrlP
 let g:ctrlp_working_path_mode = 'rw'
 
-" Restore cursor position
-function! ResCur()
-  if line("'\"") <= line("$")
-    normal! g`"
-    return 1
-  endif
-endfunction
-
-augroup resCur
-  autocmd!
-  autocmd BufWinEnter * call ResCur()
-augroup END
-
 " vim-airline
 set laststatus=2
 let g:airline#extensions#tabline#enabled=1
@@ -184,4 +172,5 @@ set printoptions=number:y,syntax:n
 set printheader=%<%f%=\ %N/%{line('$')/73+1}
 
 " Clipboard
-set clipboard=unnamedplus
+"set clipboard=unnamedplus
+set clipboard=unnamed
