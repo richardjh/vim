@@ -144,7 +144,7 @@ au BufRead,BufNewFile *.twig set filetype=html
 
 " PHP Manual lookup
 function! BrowseDoc()
-  ! xdg-open "http://php.net/manual-lookup.php?pattern=<cword>" 1>/dev/null 2>/dev/null &
+  ! open "http://php.net/manual-lookup.php?pattern=<cword>" 1>/dev/null 2>/dev/null &
 endfunction
 map <F4> :call BrowseDoc()<cr><cr>
 
