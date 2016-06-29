@@ -21,6 +21,7 @@ set t_Co=256
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
+Plugin 'arnaud-lb/vim-php-namespace'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'gmarik/Vundle.vim'
@@ -40,6 +41,7 @@ call vundle#end()
 filetype plugin indent on
 
 " Appearance
+set visualbell
 set showmode
 set number
 set showmatch
@@ -87,6 +89,24 @@ set noswapfile
 " Exuberant tags
 set tags=tags
 nmap <F6> :!ctags -R --fields=+aimS --languages=php <CR>
+
+" Vim php namespaces
+function! IPhpInsertUse()
+    call PhpInsertUse()
+    call feedkeys('a',  'n')
+endfunction
+autocmd FileType php inoremap <Leader>u <Esc>:call IPhpInsertUse()<CR>
+autocmd FileType php noremap <Leader>u :call PhpInsertUse()<CR>
+
+function! IPhpExpandClass()
+    call PhpExpandClass()
+    call feedkeys('a', 'n')
+endfunction
+autocmd FileType php inoremap <Leader>e <Esc>:call IPhpExpandClass()<CR>
+autocmd FileType php noremap <Leader>e :call PhpExpandClass()<CR>
+
+autocmd FileType php inoremap <Leader>s <Esc>:call PhpSortUse()<CR>
+autocmd FileType php noremap <Leader>s :call PhpSortUse()<CR>
 
 " Tag list
 let Tlist_Use_Right_Window   = 1
@@ -141,10 +161,11 @@ autocmd FileType nerdtree noremap <buffer> <F8> <nop>
 au BufRead,BufNewFile *.md set filetype=markdown
 au BufRead,BufNewFile *.blade.php set filetype=html
 au BufRead,BufNewFile *.twig set filetype=html
+au BufRead,BufNewFile *.html set filetype=php
 
 " PHP Manual lookup
 function! BrowseDoc()
-  ! open "http://php.net/manual-lookup.php?pattern=<cword>" 1>/dev/null 2>/dev/null &
+  ! xdg-open "http://php.net/manual-lookup.php?pattern=<cword>" 1>/dev/null 2>/dev/null &
 endfunction
 map <F4> :call BrowseDoc()<cr><cr>
 
@@ -156,6 +177,7 @@ let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 1
 let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
+let g:syntastic_php_phpcs_args="--standard=~/Documents/ruleset.xml"
 nmap <F9> :SyntasticCheck<cr>
 nmap <S-F9> :SyntasticReset<cr>
 nmap <C-F9> :Errors<cr>
@@ -176,5 +198,6 @@ set printoptions=number:y,syntax:n
 set printheader=%<%f%=\ %N/%{line('$')/73+1}
 
 " Clipboard
-"set clipboard=unnamedplus
-set clipboard=unnamed
+set clipboard=unnamedplus
+
+cmap w!! %!sudo /usr/bin/tee > /dev/null %
