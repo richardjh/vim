@@ -4,12 +4,12 @@
 " F2  - Open/Focus NERDTree
 " F3  - Open/Focus NERDTree at current file
 " F4  - Search on php.net for under cursor
-" F5  -
-" F6  - Refresh tags list
+" F5  - Run current test
+" F6  - Run current file as php script
 " F7  - Previous buffer
 " F8  - Next buffer
 " F9  - Syntastic check, Shift+F9 - reset, Ctrl+F9 - list, Ctrl+Shift+F9 - close errors
-" F10 -
+" F10 - Refresh ctags
 " F11 - Desktop fullscreen window
 " F12 - Toggle Tag list
 
@@ -21,7 +21,6 @@ set t_Co=256
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-Plugin 'arnaud-lb/vim-php-namespace'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'gmarik/Vundle.vim'
@@ -47,10 +46,7 @@ set number
 set showmatch
 set spell spelllang=en_gb
 set cursorline
-set scrolloff=3
-set foldmethod=indent
-set foldlevel=99
-set fillchars="fold: "
+set scrolloff=5
 set hlsearch
 syntax on
 highlight NonText guifg=#4a4a59
@@ -59,13 +55,13 @@ set listchars=tab:▸\ ,trail:·,nbsp:·
 set list
 
 " GUI Appearance
-set guioptions-=r  "remove right-hand scroll bar
-set guioptions-=L  "remove left-hand scroll bar
-set guioptions-=m  "remove menu
+"set guioptions-=r  "remove right-hand scroll bar
+"set guioptions-=L  "remove left-hand scroll bar
+"set guioptions-=m  "remove menu
 set guioptions-=T  "remove toolbar
-if has("gui_running")
-  set lines=40 columns=160 " make the window a little bigger
-endif
+"if has("gui_running")
+"  set lines=40 columns=160 " make the window a little bigger
+"endif
 
 " Colour
 colorscheme gruvbox
@@ -79,7 +75,7 @@ let g:indent_guides_auto_colors = 0
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=black    ctermbg=black
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=darkgrey ctermbg=darkgrey
+autocmd VimEnter,ColorschemE * :hi IndentGuidesEven guibg=darkgrey ctermbg=darkgrey
 
 " Temp files
 set nobackup
@@ -88,25 +84,7 @@ set noswapfile
 
 " Exuberant tags
 set tags=tags
-nmap <F6> :!ctags -R --fields=+aimS --languages=php <CR>
-
-" Vim php namespaces
-function! IPhpInsertUse()
-    call PhpInsertUse()
-    call feedkeys('a',  'n')
-endfunction
-autocmd FileType php inoremap <Leader>u <Esc>:call IPhpInsertUse()<CR>
-autocmd FileType php noremap <Leader>u :call PhpInsertUse()<CR>
-
-function! IPhpExpandClass()
-    call PhpExpandClass()
-    call feedkeys('a', 'n')
-endfunction
-autocmd FileType php inoremap <Leader>e <Esc>:call IPhpExpandClass()<CR>
-autocmd FileType php noremap <Leader>e :call PhpExpandClass()<CR>
-
-autocmd FileType php inoremap <Leader>s <Esc>:call PhpSortUse()<CR>
-autocmd FileType php noremap <Leader>s :call PhpSortUse()<CR>
+nmap <F10> :!ctags -R --fields=+aimS --languages=php <CR>
 
 " Tag list
 let Tlist_Use_Right_Window   = 1
@@ -169,6 +147,12 @@ function! BrowseDoc()
 endfunction
 map <F4> :call BrowseDoc()<cr><cr>
 
+" Run current test
+nmap <F5> :!phpunit "%" --stderr<CR>
+
+" Run current file as php script
+nmap <F6> :!php -f "%"<CR>
+
 " Syntastic, requires phpcs and phpmd in your path
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -176,8 +160,8 @@ set statusline+=%*
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 1
+let g:syntastic_php_phpcs_args = 'standard=PSR2'
 let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
-let g:syntastic_php_phpcs_args="--standard=~/Documents/ruleset.xml"
 nmap <F9> :SyntasticCheck<cr>
 nmap <S-F9> :SyntasticReset<cr>
 nmap <C-F9> :Errors<cr>
@@ -198,6 +182,6 @@ set printoptions=number:y,syntax:n
 set printheader=%<%f%=\ %N/%{line('$')/73+1}
 
 " Clipboard
-set clipboard=unnamedplus
+"set clipboard=unnamedplus
 
 cmap w!! %!sudo /usr/bin/tee > /dev/null %
