@@ -32,6 +32,7 @@ Plugin 'aufgang001/vim-nerdtree_plugin_open'
 Plugin 'scrooloose/syntastic'
 Plugin 'shawncplus/phpcomplete.vim'
 Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-scripts/taglist.vim'
 Plugin 'Shougo/neocomplete.vim'
 Plugin 'morhetz/gruvbox'
@@ -139,7 +140,7 @@ autocmd FileType nerdtree noremap <buffer> <F8> <nop>
 au BufRead,BufNewFile *.md set filetype=markdown
 au BufRead,BufNewFile *.blade.php set filetype=html
 au BufRead,BufNewFile *.twig set filetype=html
-au BufRead,BufNewFile *.html set filetype=php
+au BufRead,BufNewFile *.html set filetype=html
 
 " PHP Manual lookup
 function! BrowseDoc()
@@ -162,6 +163,7 @@ let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 1
 let g:syntastic_php_phpcs_args = 'standard=PSR2'
 let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
+let g:syntastic_html_checkers = ['tidy']
 nmap <F9> :SyntasticCheck<cr>
 nmap <S-F9> :SyntasticReset<cr>
 nmap <C-F9> :Errors<cr>
@@ -171,7 +173,7 @@ nmap <S-C-F9> :lclose<cr>
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
 " Mouse
-set mouse=a
+set mouse=
 set mousehide
 
 " Map CapsLock to Esc
@@ -184,4 +186,8 @@ set printheader=%<%f%=\ %N/%{line('$')/73+1}
 " Clipboard
 "set clipboard=unnamedplus
 
+" Save as root
 cmap w!! %!sudo /usr/bin/tee > /dev/null %
+
+" Let % match html tags too
+runtime macros/matchit.vim
