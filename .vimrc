@@ -5,10 +5,10 @@
 " F3  - Open/Focus NERDTree at current file
 " F4  - Search on php.net for under cursor
 " F5  - Run current test
-" F6  - Run current file as php script
+" F6  - Next pane
 " F7  - Previous buffer
 " F8  - Next buffer
-" F9  - Syntastic check, Shift+F9 - reset, Ctrl+F9 - list, Ctrl+Shift+F9 - close errors
+" F9  -
 " F10 - Refresh ctags
 " F11 - Desktop fullscreen window
 " F12 - Toggle Tag list
@@ -21,52 +21,46 @@ set t_Co=256
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
+Plugin 'gmarik/Vundle.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'gmarik/Vundle.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'rking/ag.vim'
 Plugin 'scrooloose/nerdtree'
-Plugin 'aufgang001/vim-nerdtree_plugin_open'
+Plugin 'vim-scripts/vim-nerdtree_plugin_open'
 Plugin 'scrooloose/syntastic'
 Plugin 'shawncplus/phpcomplete.vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'vim-scripts/taglist.vim'
 Plugin 'Shougo/neocomplete.vim'
-Plugin 'morhetz/gruvbox'
 Plugin 'dietsche/vim-lastplace'
+Plugin 'morhetz/gruvbox'
+Plugin 'ap/vim-css-color'
+Plugin 'luochen1990/rainbow'
+Plugin 'lepture/vim-jinja'
+Plugin 'majutsushi/tagbar'
 call vundle#end()
 filetype plugin indent on
 
 " Appearance
-set visualbell
+set novisualbell
 set showmode
 set number
 set showmatch
 set spell spelllang=en_gb
-set cursorline
-set scrolloff=5
+set scrolloff=6
 set hlsearch
 syntax on
-highlight NonText guifg=#4a4a59
-highlight SpecialKey guifg=#4a4a59
 set listchars=tab:▸\ ,trail:·,nbsp:·
 set list
 
-" GUI Appearance
-"set guioptions-=r  "remove right-hand scroll bar
-"set guioptions-=L  "remove left-hand scroll bar
-"set guioptions-=m  "remove menu
-set guioptions-=T  "remove toolbar
-"if has("gui_running")
-"  set lines=40 columns=160 " make the window a little bigger
-"endif
+" Turn on rainbow matching
+let g:rainbow_active = 1
 
 " Colour
 colorscheme gruvbox
 set background=dark
+hi clear SpellBad
+hi SpellBad cterm=underline
 
 " Strip trailing white space on save
 autocmd BufWritePre * :%s/\s\+$//e
@@ -87,10 +81,6 @@ set noswapfile
 set tags=tags
 nmap <F10> :!ctags -R --fields=+aimS --languages=php <CR>
 
-" Tag list
-let Tlist_Use_Right_Window   = 1
-nmap <F12> :TlistToggle<cr>
-
 " Code completion
 autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -110,14 +100,17 @@ set copyindent
 set nowrap
 set nojoinspaces
 
+" Searching
+set ignorecase
+set smartcase
+
 " NERDTree
 nmap <C-v> :vertical resize +5<cr>
-nmap <C-b> :NERDTreeToggle<cr>
 nmap <F2> :NERDTree<cr>
 nmap <F3> :NERDTreeFind<cr>
 
-" NERDTree open
-let g:nerdtree_plugin_open_cmd = 'open'
+" NERDTree open (use E to open a file in default application)
+let g:nerdtree_plugin_open_cmd = 'xdg-open'
 
 " CtrlP
 let g:ctrlp_working_path_mode = 'rw'
@@ -127,6 +120,12 @@ set laststatus=2
 let g:airline#extensions#tabline#enabled=1
 let g:airline_detect_paste=0
 let g:airline_theme='jellybeans'
+
+" tagbar
+set ut=100 "update the taglist faster (was about 4 seconds)
+let g:tagbar_show_visibility = 1
+let g:tagbar_width = 25
+nmap <F12> :TagbarToggle<CR><CR>
 
 " buffers
 set hidden
@@ -138,8 +137,8 @@ autocmd FileType nerdtree noremap <buffer> <F8> <nop>
 
 " Change filetype associations
 au BufRead,BufNewFile *.md set filetype=markdown
-au BufRead,BufNewFile *.blade.php set filetype=html
 au BufRead,BufNewFile *.twig set filetype=html
+au BufRead,BufNewFile *.latte set filetype=html
 au BufRead,BufNewFile *.html set filetype=html
 
 " PHP Manual lookup
@@ -152,9 +151,9 @@ map <F4> :call BrowseDoc()<cr><cr>
 nmap <F5> :!phpunit "%" --stderr<CR>
 
 " Run current file as php script
-nmap <F6> :!php -f "%"<CR>
+nmap <F6> <C-w><C-w>
 
-" Syntastic, requires phpcs and phpmd in your path
+" Syntastic, requires php, phpstan, phpcs and phpmd in your path
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -162,12 +161,9 @@ let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 1
 let g:syntastic_php_phpcs_args = 'standard=PSR2'
-let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
+let g:syntastic_php_checkers = ['php', 'phpstan', 'phpcs', 'phpmd']
 let g:syntastic_html_checkers = ['tidy']
-nmap <F9> :SyntasticCheck<cr>
-nmap <S-F9> :SyntasticReset<cr>
-nmap <C-F9> :Errors<cr>
-nmap <S-C-F9> :lclose<cr>
+let g:syntastic_html_tidy_ignore_errors = ['escaping malformed URI reference', 'trimming empty', "plain text isn't allowed in"]
 
 " Silver Searcher
 let g:ackprg = 'ag --nogroup --nocolor --column'
@@ -176,18 +172,16 @@ let g:ackprg = 'ag --nogroup --nocolor --column'
 set mouse=
 set mousehide
 
-" Map CapsLock to Esc
-au VimEnter * silent! !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
-
-" Printing
-set printoptions=number:y,syntax:n
-set printheader=%<%f%=\ %N/%{line('$')/73+1}
-
-" Clipboard
-"set clipboard=unnamedplus
-
 " Save as root
 cmap w!! %!sudo /usr/bin/tee > /dev/null %
 
 " Let % match html tags too
 runtime macros/matchit.vim
+
+" Calculator
+" usage: type in insert mode 8*6 and press <C-a> and 8*6 is replaced
+"        by 8*6=48
+ino <C-a> <C-O>yiW<End>=<C-R>=<C-R>0<CR>
+
+" Date
+nmap <C-d> :r!date +'\%Y-\%m-\%d \%H:\%M:\%S '<CR>
